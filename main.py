@@ -28,6 +28,7 @@ def play_random_sound(audio_folder="audio"):
         data, fs = sf.read(sound_file, dtype='float32')
         is_playing = True
         sd.play(data, fs, device=VIRTUAL_MIC_DEVICE_INDEX, blocking=True)  
+        is_playing = False
 
 
 def audio_callback(indata, frames, time, status):
@@ -37,7 +38,7 @@ def audio_callback(indata, frames, time, status):
     audio_data = np.frombuffer(indata, dtype=np.int16)
     rms = np.sqrt(np.mean(np.square(audio_data)))
     volume = rms / 32768  # normalize
-    
+    print(volume)
     if volume > THRESHOLD and not is_playing:
         play_random_sound()
 
