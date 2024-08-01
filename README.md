@@ -12,7 +12,7 @@ pip install numpy sounddevice soundfile
 ```
 3. run in python
 ```python
-import sounnddevice as sd
+import sounddevice as sd
 print(sd.query_devices())
 ```
 4. find your microphone and virtual microphone indexes
